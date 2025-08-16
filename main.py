@@ -139,6 +139,24 @@ class CTFLevel4:
         resp.media = {"level": 4, "decoded": decoded, "similarity": similarity, "result": result}
 
 
+class FlagValidation:
+    def on_get(self, req, resp):
+        level = int(get_query_param(req, "level"))
+        submitted = get_query_param(req, "prompt").strip().lower()
+
+        if level not in original_prompts:
+            resp.status = falcon.HTTP_400
+            resp.media = {"error": "Invalid level provided."}
+            return
+
+        expected = original_prompts[level].strip().lower()
+
+        if submitted == expected:
+            resp.media = {"level": level, "flag": f"FLAG-LEVEL{level}-REVEALED"}
+        else:
+            resp.media = {"level": level, "message": "Incorrect prompt. Try again."}
+
+
 # ----------- Falcon App Setup ----------- #
 app = falcon.App()
 app.add_route("/", RootResource())
@@ -146,3 +164,4 @@ app.add_route("/ctf/1", CTFLevel1())
 app.add_route("/ctf/2", CTFLevel2())
 app.add_route("/ctf/3", CTFLevel3())
 app.add_route("/ctf/4", CTFLevel4())
+app.add_route("/check", FlagValidation())
