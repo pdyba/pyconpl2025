@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Injection CTF – Vue Frontend</title>
+  <style>
+    :root { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    body { margin: 0; background: #0b1020; color: #e8ecff; }
+    header { padding: 16px 20px; background: #111734; box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset; }
+    h1 { font-size: 20px; margin: 0; }
+    .container { padding: 20px; max-width: 980px; margin: 0 auto; display: grid; gap: 16px; }
+    .card { background: #121a3a; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    label { display: block; font-size: 12px; opacity: 0.9; margin-bottom: 6px; }
+    input[type="text"], textarea { width: 100%; background: #0e1531; color: #e8ecff; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 10px 12px; outline: none; }
+    textarea { min-height: 90px; resize: vertical; }
+    button { background: #4f46e5; color: white; border: 0; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    button.secondary { background: #0e1531; border: 1px solid rgba(255,255,255,0.12); }
+    .muted { color: #a8b2ff; font-size: 12px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; word-break: break-word; }
+    .result { white-space: pre-wrap; background: #0e1531; border: 1px dashed rgba(255,255,255,0.15); padding: 12px; border-radius: 10px; }
+    .success { color: #22c55e; }
+    .error { color: #ef4444; }
+  </style>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🛡️ Prompt Injection CTF – SaaS Marketing AI</h1>
+  </header>
+
+  <div id="app" class="container">
+    <div class="card">
+      <p class="muted">Goal: extract (or semantically reconstruct) the original prompt for each level by interacting with the API. Use <span class="mono">/check</span> to validate your extracted prompt.</p>
+      <div class="row-3">
+        <div>
+          <label>API Base URL</label>
+          <input type="text" v-model="baseUrl" placeholder="e.g. http://localhost:8000"/>
+        </div>
+        <div>
+          <label>Selected Level</label>
+          <input type="text" v-model.number="level" />
+        </div>
+        <div style="align-self:end">
+          <button class="secondary" @click="reset">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 1 -->
+    <div class="card" v-if="level===1">
+      <h2>Level 1 – Direct Interaction</h2>
+      <p class="muted">Sends your input to the model with a hidden marketing prompt. Study the response to infer the prompt.</p>
+      <label>Your Input</label>
+      <textarea v-model="inputs.l1"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="callEndpoint('/ctf/1?text=' + encodeURIComponent(inputs.l1))">Send</button>
+        <button class="secondary" @click="inputs.l1=''">Clear</button>
+      </div>
+      <div v-if="responses.l1" class="result" style="margin-top:12px;">{{ responses.l1 }}</div>
+    </div>
+
+    <!-- Level 2 -->
+    <div class="card" v-if="level===2">
+      <h2>Level 2 – Confuse & Extract</h2>
+      <p class="muted">Craft inputs that coax the model into repeating its original instructions (the hidden prompt).</p>
+      <label>Your Input</label>
+      <textarea v-model="inputs.l2"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="callEndpoint('/ctf/2?query=' + encodeURIComponent(inputs.l2))">Send</button>
+        <button class="secondary" @click="inputs.l2=''">Clear</button>
+      </div>
+      <div v-if="responses.l2" class="result" style="margin-top:12px;">{{ responses.l2 }}</div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="card" v-if="level===3">
+      <h2>Level 3 – Reflection Check</h2>
+      <p class="muted">If the model’s <em>response</em> contains the original prompt, it counts as a success. Keep iterating!</p>
+      <label>Your Input</label>
+      <textarea v-model="inputs.l3"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="callEndpoint('/ctf/3?text=' + encodeURIComponent(inputs.l3))">Send</button>
+        <button class="secondary" @click="inputs.l3=''">Clear</button>
+      </div>
+      <div v-if="responses.l3" class="result" style="margin-top:12px;">{{ responses.l3 }}</div>
+    </div>
+
+    <!-- Level 4 -->
+    <div class="card" v-if="level===4">
+      <h2>Level 4 – Semantic Similarity</h2>
+      <p class="muted">Reconstruct the prompt’s meaning. Encode your text to Base64 and submit; we compare with the hidden prompt using embeddings.</p>
+      <label>Your Guess (plain text)</label>
+      <textarea v-model="inputs.l4"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="encodeAndSend()">Encode & Send</button>
+        <button class="secondary" @click="inputs.l4=''">Clear</button>
+      </div>
+      <div v-if="responses.l4" class="result" style="margin-top:12px;">{{ responses.l4 }}</div>
+    </div>
+
+    <!-- Validation / Flag -->
+    <div class="card">
+      <h2>Validate Extracted Prompt</h2>
+      <p class="muted">Submit what you believe is the original prompt for a level. Exact match required.</p>
+      <div class="row">
+        <div>
+          <label>Level</label>
+          <input type="text" v-model.number="check.level" />
+        </div>
+        <div>
+          <label>Your Extracted Prompt</label>
+          <input type="text" v-model="check.prompt" />
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="checkFlag()">Check / Get Flag</button>
+        <button class="secondary" @click="check.prompt=''">Clear</button>
+      </div>
+      <div v-if="responses.flag" class="result" :class="{success: responses.flag.includes('FLAG-'), error: responses.flag.includes('Incorrect')}">{{ responses.flag }}</div>
+    </div>
+
+    <div class="card">
+      <h2>Console</h2>
+      <div class="result mono">{{ log }}</div>
+    </div>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        const baseUrl = ref(''); // same origin by default
+        const level = ref(1);
+        const inputs = ref({ l1: '', l2: '', l3: '', l4: '' });
+        const responses = ref({ l1: '', l2: '', l3: '', l4: '', flag: '' });
+        const check = ref({ level: 1, prompt: '' });
+        const log = ref('Ready');
+
+        const api = (path) => (baseUrl.value ? baseUrl.value.replace(/\/$/, '') : '') + path;
+
+        const callEndpoint = async (path) => {
+          try {
+            log.value = `GET ${api(path)}`;
+            const res = await fetch(api(path));
+            const data = await res.json();
+            const key = ['','l1','l2','l3','l4'][Number((/\/ctf\/(\d)/.exec(path)||[])[1])];
+            if (key) responses.value[key] = JSON.stringify(data, null, 2);
+          } catch (e) {
+            log.value = 'Request error: ' + e.message;
+          }
+        };
+
+        const encodeAndSend = () => {
+          try {
+            const encoded = btoa(unescape(encodeURIComponent(inputs.value.l4)));
+            callEndpoint('/ctf/4?encoded=' + encodeURIComponent(encoded));
+          } catch (e) {
+            log.value = 'Encoding error: ' + e.message;
+          }
+        };
+
+        const checkFlag = async () => {
+          try {
+            const params = new URLSearchParams({ level: String(check.value.level), prompt: check.value.prompt });
+            log.value = `GET ${api('/check?' + params.toString())}`;
+            const res = await fetch(api('/check?' + params.toString()));
+            const data = await res.json();
+            responses.value.flag = JSON.stringify(data, null, 2);
+          } catch (e) {
+            log.value = 'Check error: ' + e.message;
+          }
+        };
+
+        const reset = () => {
+          inputs.value = { l1: '', l2: '', l3: '', l4: '' };
+          responses.value = { l1: '', l2: '', l3: '', l4: '', flag: '' };
+          log.value = 'Reset complete';
+        };
+
+        return { baseUrl, level, inputs, responses, check, log, callEndpoint, encodeAndSend, checkFlag, reset };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
