@@ -1,7 +1,6 @@
 import os
 import base64
 import re
-import json
 import falcon
 import numpy as np
 from urllib.parse import parse_qs
