@@ -6,7 +6,7 @@ This is a complete HTML presentation about prompt injection security risks, chal
 
 ### Features
 
-- **13 slides** covering comprehensive prompt injection topics
+- **14 slides** covering comprehensive prompt injection topics
 - **Interactive agenda** with all presentation topics
 - **Modern design** with gradient backgrounds and animations
 - **Multiple navigation methods**:
@@ -24,17 +24,18 @@ This is a complete HTML presentation about prompt injection security risks, chal
 
 1. **Title Slide** - Introduction to the topic
 2. **Agenda** - Overview of all topics to be covered
-3. **What is Prompt Injection?** - Definition and core risks
-4. **Why Prompt Injection is Dangerous** - Real-world impacts
-5. **OWASP Top 10** - Security framework context
-6. **Level 1 – Direct Interaction** - Basic attack method
-7. **Level 2 – Prompt Confusion** - Advanced confusion techniques
-8. **Level 3 – Reflection Check** - Automated detection method
-9. **Level 4 – Semantic Similarity** - Vector embedding approach
-10. **Level 5 – Partial Match Scoring** - Token overlap analysis
-11. **Defensive Measures** - Layered security approach
-12. **Real-World Incidents** - Historical examples and timeline
-13. **Key Takeaways** - Summary and conclusions
+3. **About Me** - Speaker background and experience
+4. **What is Prompt Injection?** - Definition and core risks
+5. **Why Prompt Injection is Dangerous** - Real-world impacts
+6. **OWASP Top 10** - Security framework context
+7. **Level 1 – Direct Interaction** - Basic attack method
+8. **Level 2 – Prompt Confusion** - Advanced confusion techniques
+9. **Level 3 – Reflection Check** - Automated detection method
+10. **Level 4 – Semantic Similarity** - Vector embedding approach
+11. **Level 5 – Partial Match Scoring** - Token overlap analysis
+12. **Defensive Measures** - Layered security approach
+13. **Real-World Incidents** - Historical examples and timeline
+14. **Key Takeaways** - Summary and conclusions
 
 ### How to Use
 

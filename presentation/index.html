@@ -367,6 +367,39 @@
     .timeline-item:last-child:after {
       display: none;
     }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .bio-item {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .bio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.2);
+    }
+
+    .bio-item h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .bio-item p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
@@ -374,15 +407,15 @@
   
   <div class="presentation">
     <div class="slide-counter">
-      <span id="current-slide">1</span> / <span id="total-slides">13</span>
+      <span id="current-slide">1</span> / <span id="total-slides">14</span>
     </div>
 
     <!-- Slide 1: Title -->
     <div class="slide active title-slide">
       <div class="slide-content">
-        <h1>🛡️ Prompt Injection</h1>
-        <p class="subtitle">Risks, Challenges & Mitigations</p>
-        <p class="conference-info">PyCon PL 2025</p>
+        <h1>🛡️ Prompt Injection and Jailbreaks</h1>
+        <p class="subtitle">Adversarial Testing of LLMs</p>
+        <p class="conference-info">®Piotr Dyba 2025, 29.08.2025 @ PyConPL</p>
       </div>
     </div>
 
@@ -391,6 +424,7 @@
       <div class="slide-content">
         <h2>📋 Agenda</h2>
         <ul class="agenda-list">
+          <li>About Me</li>
           <li>What is Prompt Injection?</li>
           <li>Why Prompt Injection is Dangerous</li>
           <li>Prompt Injection in OWASP Top 10</li>
@@ -406,7 +440,47 @@
       </div>
     </div>
 
-    <!-- Slide 3: What is Prompt Injection? -->
+    <!-- Slide 3: About Me -->
+    <div class="slide">
+      <div class="slide-content">
+        <h2>👨‍💼 About Me</h2>
+        <div class="bio-grid">
+          <div class="bio-item">
+            <h3>🚀 Engineering Leader</h3>
+            <p>14+ years of experience, including 5 years as CTO, building and managing teams of up to 100 people while scaling organizations without losing startup spirit.</p>
+          </div>
+          
+          <div class="bio-item">
+            <h3>📈 Proven Business Impact</h3>
+            <p>Drove <strong>1,464% company growth</strong> and delivered efficiency gains like cutting cloud costs from <strong>£13,000/day to under £3,000/day</strong>.</p>
+          </div>
+          
+          <div class="bio-item">
+            <h3>☁️ Cloud, AI & Cybersecurity Architect</h3>
+            <p>Designed and implemented AI-ready, secure, and scalable architectures across AWS, Azure, and GCP</p>
+          </div>
+          
+          <div class="bio-item">
+            <h3>🎤 International Speaker & Educator</h3>
+            <p>Presented at <strong>EuroPython and PyCon</strong>
+               on event-driven architecture, Python, and cybersecurity. Trained and mentored with PyLadies and PyLove, run free worshop for<strong>200 participants</strong> </p>
+          </div>
+
+                    
+          <div class="bio-item">
+            <h3>🔒 Cybersecurity Innovator</h3>
+            <p>Developed honeypots, honeypots networks and xDR class detection systems, and built security operations center.</p>
+          </div>
+          
+          <div class="bio-item">
+            <h3>📸 Former War Photojournalist</h3>
+            <p>Certified war correspondent with frontline experience in conflict zones, bringing a unique perspective on <strong>resilience, risk management, and leadership under pressure</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: What is Prompt Injection? -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎯 What is Prompt Injection?</h2>
@@ -427,7 +501,7 @@
       </div>
     </div>
 
-    <!-- Slide 4: Why Dangerous -->
+    <!-- Slide 5: Why Dangerous -->
     <div class="slide">
       <div class="slide-content">
         <h2>⚠️ Why Prompt Injection is Dangerous</h2>
@@ -444,7 +518,7 @@
       </div>
     </div>
 
-    <!-- Slide 5: OWASP Top 10 -->
+    <!-- Slide 6: OWASP Top 10 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🔟 Prompt Injection in OWASP Top 10</h2>
@@ -462,7 +536,7 @@
       </div>
     </div>
 
-    <!-- Slide 6: Level 1 -->
+    <!-- Slide 7: Level 1 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥇 Level 1 – Direct Interaction</h2>
@@ -493,7 +567,7 @@
       </div>
     </div>
 
-    <!-- Slide 7: Level 2 -->
+    <!-- Slide 8: Level 2 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥈 Level 2 – Prompt Confusion</h2>
@@ -524,7 +598,7 @@
       </div>
     </div>
 
-    <!-- Slide 8: Level 3 -->
+    <!-- Slide 9: Level 3 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥉 Level 3 – Reflection Check</h2>
@@ -555,7 +629,7 @@
       </div>
     </div>
 
-    <!-- Slide 9: Level 4 -->
+    <!-- Slide 10: Level 4 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🏅 Level 4 – Semantic Similarity</h2>
@@ -586,7 +660,7 @@
       </div>
     </div>
 
-    <!-- Slide 10: Level 5 -->
+    <!-- Slide 11: Level 5 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎖️ Level 5 – Partial Match Scoring</h2>
@@ -617,7 +691,7 @@
       </div>
     </div>
 
-    <!-- Slide 11: Defensive Measures -->
+    <!-- Slide 12: Defensive Measures -->
     <div class="slide">
       <div class="slide-content">
         <h2>🛡️ Defensive Measures</h2>
@@ -652,7 +726,7 @@
       </div>
     </div>
 
-    <!-- Slide 12: Real-World Incidents -->
+    <!-- Slide 13: Real-World Incidents -->
     <div class="slide">
       <div class="slide-content">
         <h2>🌍 Real-World Prompt Injection Incidents</h2>
@@ -681,7 +755,7 @@
       </div>
     </div>
 
-    <!-- Slide 13: Key Takeaways -->
+    <!-- Slide 14: Key Takeaways -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎯 Key Takeaways</h2>
