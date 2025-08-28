@@ -1,6 +1,6 @@
 import os
-import pdb
 
+import falcon
 import requests
 
 
@@ -30,5 +30,5 @@ def chat(system_prompt: str, user_text: str) -> str:
             return result['choices'][0]['message']['content']
         else:
             return f"Request failed, error code: {response.status_code}"
-    except requests.Timeout:
-        return f"Request timed out"
+    except requests.Timeout as err:
+        raise falcon.HTTPGatewayTimeout from err
