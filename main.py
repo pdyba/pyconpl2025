@@ -117,8 +117,10 @@ class CTFLevel2:
         user_q = get_query_param(req, "query", "")
         reply, err = chat(original_prompts[2], user_q)
         exposed = original_prompts[2].lower() in (reply or "").lower()
-        result = "Success: You extracted the original prompt." if exposed else "Prompt not exposed yet. Keep trying."
-        resp.media = {"level": 2, "model_reply": reply, "exposed": exposed, "result": result}
+        if exposed:
+            resp.media = {"level": 2, "result": "Nice try, but try again."}
+        else:
+            resp.media = {"level": 2, "result": reply}
 
 
 class CTFLevel3:
