@@ -1,5 +1,6 @@
 import os
 import base64
+import logging
 import re
 import falcon
 import numpy as np
@@ -13,6 +14,9 @@ try:
 except Exception:
     openai = None
     OPENAI_CLIENT = None
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # ---------------- Configuration ---------------- #
 original_prompts = {
@@ -192,8 +196,41 @@ class FlagValidation:
             resp.media = {"level": level, "message": "Incorrect prompt. Try again."}
 
 
+class RequestLoggingMiddleware:
+    """Middleware to log all incoming HTTP requests"""
+
+    def process_request(self, req, resp):
+        # Log the request method and URL
+        logger.info(f"🌐 {req.method} {req.url}")
+
+    def process_response(self, req, resp, resource, req_succeeded):
+        # Log the response status
+        status_code = getattr(resp, "status", "Unknown")
+        if req_succeeded:
+            logger.info(f"✅ {req.method} {req.url} -> {status_code}")
+        else:
+            logger.warning(f"❌ {req.method} {req.url} -> {status_code}")
+
+
 # ---------------- App Wiring ---------------- #
-app = falcon.App()
+app = falcon.App(
+    middleware=[
+        RequestLoggingMiddleware(),
+        falcon.CORSMiddleware(
+            allow_origins="*",
+            allow_credentials="*",
+            expose_headers=[
+                "Content-Type",
+                "Authorization",
+                "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials",
+                "Access-Control-Allow-Headers",
+                "Access-Control-Allow-Methods",
+            ],
+        ),
+    ]
+)
+
 app.add_route('/', RootResource())
 app.add_route('/ctf/1', CTFLevel1())
 app.add_route('/ctf/2', CTFLevel2())
