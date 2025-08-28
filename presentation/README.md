@@ -58,6 +58,7 @@ This is a complete HTML presentation about prompt injection security risks, chal
 ### Technical Details
 
 - **Pure HTML/CSS/JavaScript** - No external dependencies
+- **Modular architecture** - Separated CSS into external stylesheet
 - **Modern CSS features**: Gradients, backdrop-filter, animations
 - **Responsive design** with CSS Grid and Flexbox
 - **Keyboard accessibility** with comprehensive key support
@@ -83,6 +84,7 @@ The presentation can be easily customized by:
 ```
 presentation/
 ├── index.html              # Main presentation file
+├── styles.css              # Presentation styles (separated from HTML)
 ├── speaker-photo.jpg       # Speaker photo
 ├── apollo-logo.svg         # Apollo.io company logo
 └── README.md              # This file
