@@ -400,6 +400,292 @@
       line-height: 1.5;
       margin: 0;
     }
+
+    .about-me-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .speaker-photo {
+      flex-shrink: 0;
+      width: 300px;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid #ffd700;
+      box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(255,215,0,0.5);
+    }
+
+    .bio-grid {
+      flex: 1;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    @media (max-width: 1200px) {
+      .about-me-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .speaker-photo {
+        width: 250px;
+      }
+      
+      .profile-image {
+        height: 300px;
+      }
+    }
+
+    .apollo-slide {
+      text-align: center;
+      width: 100%;
+    }
+
+    .apollo-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .apollo-logo {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 5px 15px rgba(239, 255, 0, 0.4));
+    }
+
+    .apollo-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .apollo-description {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .apollo-description p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .hiring-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .job-card {
+      background: rgba(239, 255, 0, 0.1);
+      border: 2px solid #EFFF00;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(239, 255, 0, 0.3);
+    }
+
+    .job-card h3 {
+      color: #EFFF00;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .job-card p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .apply-btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #EFFF00, #FFE135);
+      color: #1e3c72;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .apply-btn:hover {
+      background: linear-gradient(45deg, #FFE135, #EFFF00);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(239, 255, 0, 0.4);
+    }
+
+    .apollo-footer {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(239, 255, 0, 0.05);
+      border-radius: 10px;
+      border-left: 4px solid #EFFF00;
+    }
+
+    .apollo-footer p {
+      font-size: 1.2rem;
+      margin: 0;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .hiring-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .apollo-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .comparison-container {
+      display: flex;
+      gap: 2rem;
+      align-items: stretch;
+      margin: 2rem 0;
+    }
+
+    .comparison-side {
+      flex: 1;
+      text-align: left;
+    }
+
+    .comparison-side h3 {
+      color: #ffd700;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 0.5rem;
+    }
+
+    .concept-card {
+      background: rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      height: 100%;
+    }
+
+    .concept-card h4 {
+      color: #87ceeb;
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    .concept-card h4:first-child {
+      margin-top: 0;
+    }
+
+    .concept-card p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .example-box {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border-left: 3px solid #ffd700;
+    }
+
+    .example-box h4 {
+      color: #ffd700 !important;
+      margin-top: 0 !important;
+    }
+
+    .example-box p {
+      margin: 0.5rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+    }
+
+    .key-idea {
+      background: rgba(255,215,0,0.1);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ffd700;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .vs-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      flex-shrink: 0;
+    }
+
+    .vs-divider span {
+      background: linear-gradient(45deg, #ffd700, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .key-difference {
+      background: rgba(255,215,0,0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 2px solid #ffd700;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .key-difference h3 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .key-difference p {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    @media (max-width: 1000px) {
+      .comparison-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .vs-divider {
+        min-width: auto;
+        margin: 1rem 0;
+      }
+      
+      .vs-divider span {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -407,7 +693,7 @@
   
   <div class="presentation">
     <div class="slide-counter">
-      <span id="current-slide">1</span> / <span id="total-slides">14</span>
+      <span id="current-slide">1</span> / <span id="total-slides">16</span>
     </div>
 
     <!-- Slide 1: Title -->
@@ -425,6 +711,7 @@
         <h2>📋 Agenda</h2>
         <ul class="agenda-list">
           <li>About Me</li>
+          <li>Apollo.io</li>
           <li>What is Prompt Injection?</li>
           <li>Why Prompt Injection is Dangerous</li>
           <li>Prompt Injection in OWASP Top 10</li>
@@ -433,6 +720,7 @@
           <li>Level 3 – Reflection Check</li>
           <li>Level 4 – Semantic Similarity</li>
           <li>Level 5 – Partial Match Scoring</li>
+          <li>Tokenization vs Vectorization</li>
           <li>Defensive Measures</li>
           <li>Real-World Incidents</li>
           <li>Key Takeaways</li>
@@ -444,7 +732,11 @@
     <div class="slide">
       <div class="slide-content">
         <h2>👨‍💼 About Me</h2>
-        <div class="bio-grid">
+        <div class="about-me-container">
+          <div class="speaker-photo">
+            <img src="speaker-photo.jpg" alt="Piotr Dyba" class="profile-image" />
+          </div>
+          <div class="bio-grid">
           <div class="bio-item">
             <h3>🚀 Engineering Leader</h3>
             <p>14+ years of experience, including 5 years as CTO, building and managing teams of up to 100 people while scaling organizations without losing startup spirit.</p>
@@ -477,10 +769,49 @@
             <p>Certified war correspondent with frontline experience in conflict zones, bringing a unique perspective on <strong>resilience, risk management, and leadership under pressure</strong>.</p>
           </div>
         </div>
+        </div>
       </div>
     </div>
 
-    <!-- Slide 4: What is Prompt Injection? -->
+    <!-- Slide 4: Apollo.io - We're Hiring! -->
+    <div class="slide">
+      <div class="slide-content">
+        <div class="apollo-slide">
+          <div class="apollo-header">
+            <img src="apollo-logo.svg" alt="Apollo.io" class="apollo-logo" />
+            <h2>🚀 Apollo.io - We're Hiring!</h2>
+          </div>
+          
+          <div class="apollo-content">
+            <div class="apollo-description">
+              <p>As <strong>Engineering Manager at Apollo.io</strong>, I'm proud to be part of a leading sales intelligence and engagement platform that helps over <strong>half a million companies</strong> find, connect with, and close their ideal customers more effectively.</p>
+              
+              <p>We're growing quickly and investing in our engineering team. Right now, we're hiring for:</p>
+            </div>
+            
+            <div class="hiring-cards">
+              <div class="job-card">
+                <h3>🔧 Senior Backend Engineer</h3>
+                <p>Build scalable systems with Ruby/Rails, MongoDB, Redis, Elasticsearch</p>
+                <a href="https://job-boards.greenhouse.io/apolloio/jobs/4950404004" target="_blank" class="apply-btn">Apply Now</a>
+              </div>
+              
+              <div class="job-card">
+                <h3>💻 Senior Frontend Engineer</h3>
+                <p>Create impactful user experiences with React, Redux, JavaScript</p>
+                <a href="https://job-boards.greenhouse.io/apolloio/jobs/4950492004" target="_blank" class="apply-btn">Apply Now</a>
+              </div>
+            </div>
+            
+            <div class="apollo-footer">
+              <p>If you or someone you know is interested in building scalable systems and impactful products at a global scale, <strong>I'd love to chat!</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: What is Prompt Injection? -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎯 What is Prompt Injection?</h2>
@@ -501,7 +832,7 @@
       </div>
     </div>
 
-    <!-- Slide 5: Why Dangerous -->
+    <!-- Slide 6: Why Dangerous -->
     <div class="slide">
       <div class="slide-content">
         <h2>⚠️ Why Prompt Injection is Dangerous</h2>
@@ -518,7 +849,7 @@
       </div>
     </div>
 
-    <!-- Slide 6: OWASP Top 10 -->
+    <!-- Slide 7: OWASP Top 10 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🔟 Prompt Injection in OWASP Top 10</h2>
@@ -536,7 +867,7 @@
       </div>
     </div>
 
-    <!-- Slide 7: Level 1 -->
+    <!-- Slide 8: Level 1 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥇 Level 1 – Direct Interaction</h2>
@@ -567,7 +898,7 @@
       </div>
     </div>
 
-    <!-- Slide 8: Level 2 -->
+    <!-- Slide 9: Level 2 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥈 Level 2 – Prompt Confusion</h2>
@@ -598,7 +929,7 @@
       </div>
     </div>
 
-    <!-- Slide 9: Level 3 -->
+    <!-- Slide 10: Level 3 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🥉 Level 3 – Reflection Check</h2>
@@ -629,7 +960,7 @@
       </div>
     </div>
 
-    <!-- Slide 10: Level 4 -->
+    <!-- Slide 11: Level 4 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🏅 Level 4 – Semantic Similarity</h2>
@@ -660,7 +991,7 @@
       </div>
     </div>
 
-    <!-- Slide 11: Level 5 -->
+    <!-- Slide 12: Level 5 -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎖️ Level 5 – Partial Match Scoring</h2>
@@ -691,7 +1022,80 @@
       </div>
     </div>
 
-    <!-- Slide 12: Defensive Measures -->
+    <!-- Slide 13: Tokenization vs Vectorization -->
+    <div class="slide">
+      <div class="slide-content">
+        <h2>🔤 Tokenization vs Vectorization</h2>
+        <div class="comparison-container">
+          <div class="comparison-side">
+            <h3>1. Tokenization</h3>
+            <div class="concept-card">
+              <h4>What it is:</h4>
+              <p>Splitting text into smaller units (tokens).</p>
+              
+              <h4>Purpose:</h4>
+              <p>Prepares raw text for further processing.</p>
+              
+              <h4>How it works:</h4>
+              <ul class="bullet-list">
+                <li>Tokens can be <strong>words</strong> ("Apollo is hiring")</li>
+                <li>Tokens can be <strong>subwords</strong> ("Ap", "ollo")</li>
+                <li>Tokens can be <strong>characters</strong> ("A", "p", "o"...)</li>
+              </ul>
+              
+              <div class="example-box">
+                <h4>Example:</h4>
+                <p><strong>Text:</strong> "Apollo.io is hiring"</p>
+                <p><strong>Tokens:</strong> [Apollo, ., io, is, hiring]</p>
+              </div>
+              
+              <div class="key-idea">
+                <strong>Key idea:</strong> Breaking text down into manageable parts.
+              </div>
+            </div>
+          </div>
+          
+          <div class="vs-divider">
+            <span>VS</span>
+          </div>
+          
+          <div class="comparison-side">
+            <h3>2. Vectorization</h3>
+            <div class="concept-card">
+              <h4>What it is:</h4>
+              <p>Converting tokens (or text) into numerical representations (vectors).</p>
+              
+              <h4>Purpose:</h4>
+              <p>Makes text understandable to machine learning models (which only work with numbers).</p>
+              
+              <h4>How it works:</h4>
+              <ul class="bullet-list">
+                <li><strong>One-hot encoding:</strong> Each word → binary vector</li>
+                <li><strong>TF-IDF:</strong> Each word → weighted importance</li>
+                <li><strong>Embeddings:</strong> Each token/word → dense vector in continuous space</li>
+              </ul>
+              
+              <div class="example-box">
+                <h4>Example (word embeddings):</h4>
+                <p><strong>"Apollo"</strong> → [0.21, -0.87, 0.34, ...]</p>
+                <p>Similar words have vectors that are close together.</p>
+              </div>
+              
+              <div class="key-idea">
+                <strong>Key idea:</strong> Turning pieces into numbers that models can work with.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="key-difference">
+          <h3>🎯 Key Difference (in one line):</h3>
+          <p><strong>Tokenization</strong> = breaking text into pieces. <strong>Vectorization</strong> = turning those pieces into numbers that models can work with.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 14: Defensive Measures -->
     <div class="slide">
       <div class="slide-content">
         <h2>🛡️ Defensive Measures</h2>
@@ -726,7 +1130,7 @@
       </div>
     </div>
 
-    <!-- Slide 13: Real-World Incidents -->
+    <!-- Slide 15: Real-World Incidents -->
     <div class="slide">
       <div class="slide-content">
         <h2>🌍 Real-World Prompt Injection Incidents</h2>
@@ -737,7 +1141,7 @@
           </div>
           <div class="timeline-item">
             <h4>Jailbreak prompts</h4>
-            <p>Popular "DAN" jailbreak bypassed safety guardrails</p>
+            <p>Popular "Do Anything Now (DAN)" jailbreak bypassed safety guardrails</p>
           </div>
           <div class="timeline-item">
             <h4>Form field injection</h4>
@@ -755,7 +1159,7 @@
       </div>
     </div>
 
-    <!-- Slide 14: Key Takeaways -->
+    <!-- Slide 16: Key Takeaways -->
     <div class="slide">
       <div class="slide-content">
         <h2>🎯 Key Takeaways</h2>

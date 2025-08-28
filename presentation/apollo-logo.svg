@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      .apollo-yellow { fill: #EFFF00; }
+    </style>
+  </defs>
+  
+  <!-- Apollo.io star logo -->
+  <g transform="translate(200,200)">
+    <!-- Main star shape with 8 points -->
+    <path class="apollo-yellow" d="M0,-120 L25,-40 L80,-80 L40,-25 L120,0 L40,25 L80,80 L25,40 L0,120 L-25,40 L-80,80 L-40,25 L-120,0 L-40,-25 L-80,-80 L-25,-40 Z"/>
+  </g>
+</svg> 

@@ -6,7 +6,7 @@ This is a complete HTML presentation about prompt injection security risks, chal
 
 ### Features
 
-- **14 slides** covering comprehensive prompt injection topics
+- **16 slides** covering comprehensive prompt injection topics and current opportunities
 - **Interactive agenda** with all presentation topics
 - **Modern design** with gradient backgrounds and animations
 - **Multiple navigation methods**:
@@ -24,18 +24,24 @@ This is a complete HTML presentation about prompt injection security risks, chal
 
 1. **Title Slide** - Introduction to the topic
 2. **Agenda** - Overview of all topics to be covered
-3. **About Me** - Speaker background and experience
-4. **What is Prompt Injection?** - Definition and core risks
-5. **Why Prompt Injection is Dangerous** - Real-world impacts
-6. **OWASP Top 10** - Security framework context
-7. **Level 1 – Direct Interaction** - Basic attack method
-8. **Level 2 – Prompt Confusion** - Advanced confusion techniques
-9. **Level 3 – Reflection Check** - Automated detection method
-10. **Level 4 – Semantic Similarity** - Vector embedding approach
-11. **Level 5 – Partial Match Scoring** - Token overlap analysis
-12. **Defensive Measures** - Layered security approach
-13. **Real-World Incidents** - Historical examples and timeline
-14. **Key Takeaways** - Summary and conclusions
+3. **About Me** - Speaker background and experience (with photo)
+4. **Apollo.io** - Current role and job opportunities
+5. **What is Prompt Injection?** - Definition and core risks
+6. **Why Prompt Injection is Dangerous** - Real-world impacts
+7. **OWASP Top 10** - Security framework context
+8. **Level 1 – Direct Interaction** - Basic attack method
+9. **Level 2 – Prompt Confusion** - Advanced confusion techniques
+10. **Level 3 – Reflection Check** - Automated detection method
+11. **Level 4 – Semantic Similarity** - Vector embedding approach
+12. **Level 5 – Partial Match Scoring** - Token overlap analysis
+13. **Tokenization vs Vectorization** - Foundation concepts explained
+14. **Defensive Measures** - Layered security approach
+15. **Real-World Incidents** - Historical examples and timeline
+16. **Key Takeaways** - Summary and conclusions
+
+### Setup
+
+1. **Add speaker photo**: Save your speaker photo as `speaker-photo.jpg` in this folder
 
 ### How to Use
 
@@ -76,8 +82,10 @@ The presentation can be easily customized by:
 
 ```
 presentation/
-├── index.html          # Main presentation file
-└── README.md          # This file
+├── index.html              # Main presentation file
+├── speaker-photo.jpg       # Speaker photo
+├── apollo-logo.svg         # Apollo.io company logo
+└── README.md              # This file
 ```
 
 ### Based On
