@@ -69,7 +69,7 @@
       <label>Your Input</label>
       <textarea v-model="inputs.l2"></textarea>
       <div style="display:flex; gap:8px; margin-top:8px;">
-        <button @click="callEndpoint('/ctf/2?query=' + encodeURIComponent(inputs.l2))">Send</button>
+        <button @click="callEndpoint('/ctf/2?text=' + encodeURIComponent(inputs.l2))">Send</button>
         <button class="secondary" @click="inputs.l2=''">Clear</button>
       </div>
       <div v-if="responses.l2" class="result" style="margin-top:12px;">{{ responses.l2 }}</div>
@@ -95,11 +95,25 @@
       <label>Your Guess (plain text)</label>
       <textarea v-model="inputs.l4"></textarea>
       <div style="display:flex; gap:8px; margin-top:8px;">
-        <button @click="encodeAndSend()">Encode & Send</button>
+        <button @click="callEndpoint('/ctf/4?text=' + encodeURIComponent(inputs.l4))">Send</button>
         <button class="secondary" @click="inputs.l4=''">Clear</button>
       </div>
       <div v-if="responses.l4" class="result" style="margin-top:12px;">{{ responses.l4 }}</div>
     </div>
+
+          <!-- Level 5 -->
+    <div class="card" v-if="level===5">
+      <h2>Level 5 – Partial Match Scoring</h2>
+      <p class="muted">Calculate token overlap precision, recall, and F1-score between the model's output and the hidden prompt.</p>
+      <label>Your Guess (plain text)</label>
+      <textarea v-model="inputs.l5"></textarea>
+      <div style="display:flex; gap:8px; margin-top:8px;">
+        <button @click="callEndpoint('/ctf/5?text=' + encodeURIComponent(inputs.l5))">Send</button>
+        <button class="secondary" @click="inputs.l5=''">Clear</button>
+      </div>
+      <div v-if="responses.l5" class="result" style="margin-top:12px;">{{ responses.l5 }}</div>
+    </div>
+
 
     <!-- Validation / Flag -->
     <div class="card">
@@ -157,7 +171,7 @@
         const encodeAndSend = () => {
           try {
             const encoded = btoa(unescape(encodeURIComponent(inputs.value.l4)));
-            callEndpoint('/ctf/4?encoded=' + encodeURIComponent(encoded));
+            callEndpoint('/ctf/4?text=' + encodeURIComponent(encoded));
           } catch (e) {
             log.value = 'Encoding error: ' + e.message;
           }
