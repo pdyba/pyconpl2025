@@ -680,4 +680,116 @@ p, li {
   .vs-divider span {
     font-size: 1.5rem;
   }
+}
+
+/* Thank You Slide Styles */
+.thank-you-container {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.thank-you-content {
+  flex: 1;
+  text-align: left;
+}
+
+.thank-you-content h2 {
+  color: #ffd700;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.thank-you-content p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-links {
+  margin: 2rem 0;
+}
+
+.contact-links h3 {
+  color: #87ceeb;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.link-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.contact-link:hover {
+  background: rgba(255,215,0,0.2);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+}
+
+.link-icon {
+  font-size: 1.2rem;
+}
+
+.link-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.final-message {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.final-message p {
+  font-size: 1.2rem;
+  color: #87ceeb;
+  font-style: italic;
+}
+
+@media (max-width: 800px) {
+  .thank-you-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .speaker-photo {
+    width: 200px;
+  }
+  
+  .profile-image {
+    height: 250px;
+  }
+  
+  .thank-you-content h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-links h3 {
+    font-size: 1.5rem;
+  }
 } 
